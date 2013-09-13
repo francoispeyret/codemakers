@@ -33,7 +33,7 @@ h3 {
 		position: absolute;
 		width: 100%;
 		z-index: 1;
-		background: transparent url(../img/script.png) repeat-y 50% 0;
+		background: transparent url(script.png) repeat-y 50% 0;
 		-webkit-animation: bgroll 5s infinite linear;
 		-moz-animation: bgroll 5s infinite linear;
 		animation: bgroll 5s infinite linear;
@@ -44,7 +44,7 @@ h3 {
 		z-index: 2;
 		width: 173px;
 		height: 234px;
-		background: transparent url(../img/desktop.png) no-repeat 50% 0;
+		background: transparent url(desktop.png) no-repeat 50% 0;
 	}
 	.cliclic {
 		display: block;
