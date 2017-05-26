@@ -106,18 +106,26 @@ $(function() {
 	});
 
 	$('#computer').click(function() {
+		writingLine();
+	});
+	
+	$(document).keypress(function () {
+		writingLine();
+	});
+
+	function writingLine() {
 		c.userinfos.score = parseInt(c.userinfos.score) + parseInt(c.get_power());
 		c.updatescore();
 		d=document.createElement('div');
 		$(d).addClass('cliclic')
-		    .html('clic!')
-		    .appendTo($("#computer"))
-		    .css({"margin-left": rand(0,100)+"px","margin-top": rand(-10,10)+"px"})
-		    .animate({marginTop: '-50px', opacity: 0},800)
-		    .queue(function() {
-		        $(this).remove();
-		    });
-	});
+			.html('clic!')
+			.appendTo($("#computer"))
+			.css({"margin-left": rand(0,100)+"px","margin-top": rand(-10,10)+"px"})
+			.animate({marginTop: '-50px', opacity: 0},800)
+			.queue(function() {
+				$(this).remove();
+			});
+	}
 
 	function get_cookie() {
 		var nameEQ = "userinfo=";
