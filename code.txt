@@ -1,0 +1,44 @@
+c.items = {
+	trainee: {
+		nb: 0,
+		price: 5
+	},
+}
+function get_cookie() {
+    var nameEQ = "userinfo=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ')
+            c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) {
+            var infotemp = {};
+            var infos = c.substring(nameEQ.length,c.length).split('§');
+            for ( var i in infos) {
+                /*var nom = infos.split(':')[0];
+                var valeur = infos.split(':')[1];
+                infotemp[nom] = valeur;*/
+                var spl = infos[i].split(':');
+                infotemp[spl[0]] = spl[1];
+            }
+            return infotemp;
+        }
+    }
+    return null;
+}
+function make_cookie() {
+    var date = new Date();
+    var infos = new Object();
+    infos.score = c.userinfos.score;
+    infos.truc = "hop";
+    infos.merguez = "999";
+    date.setTime(date.getTime()+(30*24*3600000));
+    var expires = "; expires="+date.toGMTString();
+    var tt = '';
+    for ( var i in infos)
+        tt += '§' + i + ':' + infos[i];
+    document.cookie = "userinfo="+tt.substr(1)+expires+"; path=/";
+}
+function erase_cookie() {
+    document.cookie = "userinfo=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/";
+}

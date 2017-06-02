@@ -5,6 +5,51 @@ function rand(min, max) {
 
 
 $(function() {
+
+
+	var str = "",
+		i = 0,
+		isTag,
+		text;
+
+	$.ajax({
+		url:"code.txt",
+	}).done(function(data) {
+		str = data;
+
+		nbChar = str.length;
+		console.log(nbChar);
+		return str;
+	});
+
+	function type() {
+		if(i==nbChar)
+			i = 0;
+		text = str.slice(i, ++i);
+		if (text === str) return;
+
+		$('#code').append(text);
+
+		var char = text.slice(-1);
+		if( char === ' ' || char === '	') isTag = true;
+		if( char !== ' ' ) isTag = false;
+
+		if (isTag) return type();
+	}
+
+	// (function type() {
+	// 	text = str.slice(0, ++i);
+	// 	if (text === str) return;
+	//
+	// 	$('.well').text(text);
+	//
+	// 	var char = text.slice(-1);
+	// 	if( char === '<' ) isTag = true;
+	// 	if( char === '>' ) isTag = false;
+	//
+	// 	if (isTag) return type();
+	// 	setTimeout(type, 20);
+	// }());
 	
 	c = {};
 	
@@ -109,8 +154,9 @@ $(function() {
 		writingLine();
 	});
 	
-	$(document).keypress(function () {
+	$(document).keyup(function () {
 		writingLine();
+		type();
 	});
 
 	function writingLine() {
