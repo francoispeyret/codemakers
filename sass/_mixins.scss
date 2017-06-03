@@ -1,0 +1,14 @@
+@mixin redpik3D($color, $depth:20, $directionX: 0, $directionY: 1, $darken: 2) {
+  $shadow: $directionX + 'px ' + $directionY + 'px 0 ' + $color;
+
+  // thickness
+  @for $i from 2 through $depth {
+    $shadow: $shadow + ', ' + ($directionX*$i) + 'px ' + ($directionY*$i) + 'px 0 ' + darken($color, ($darken/10)*$i);
+  }
+
+  // diffuse
+  $shadow: $shadow + ', ' + ($depth*$directionX) + 'px ' + ($depth*$directionY) + 'px 0.03em rgba(0, 0, 0, 0.4)';
+  $shadow: $shadow + ', ' + ($depth*$directionX) + 'px ' + ($depth*$directionY) + 'px 0.2em rgba(0, 0, 0, 0.25)';
+
+  text-shadow : unquote($shadow);
+}

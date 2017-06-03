@@ -1,0 +1,40 @@
+
+
+/* bootstrap */
+
+.btn {
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.btn-default {
+  color: #000;
+  background-color: #ffc923;
+  border-color: #f2bb15;
+}
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active,
+.btn-default.active,
+.open .dropdown-toggle.btn-default {
+  color: #000;
+  background-color: #f6bb0a;
+  border-color: #d2a00b;
+}
+
+
+
+.btn-primary {
+  background-color: #00a4ae;
+  border-color: #039ba4;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  background-color: #108a92;
+  border-color: #01777e;
+}
+
+

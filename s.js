@@ -6,52 +6,9 @@ function rand(min, max) {
 
 $(function() {
 
-
-	var str = "",
-		i = 0,
-		isTag,
-		text;
-
-	$.ajax({
-		url:"code.txt",
-	}).done(function(data) {
-		str = data;
-
-		nbChar = str.length;
-		console.log(nbChar);
-		return str;
-	});
-
-	function type() {
-		if(i==nbChar)
-			i = 0;
-		text = str.slice(i, ++i);
-		if (text === str) return;
-
-		$('#code').append(text);
-
-		var char = text.slice(-1);
-		if( char === ' ' || char === '	') isTag = true;
-		if( char !== ' ' ) isTag = false;
-
-		if (isTag) return type();
-	}
-
-	// (function type() {
-	// 	text = str.slice(0, ++i);
-	// 	if (text === str) return;
-	//
-	// 	$('.well').text(text);
-	//
-	// 	var char = text.slice(-1);
-	// 	if( char === '<' ) isTag = true;
-	// 	if( char === '>' ) isTag = false;
-	//
-	// 	if (isTag) return type();
-	// 	setTimeout(type, 20);
-	// }());
-	
 	c = {};
+
+	c.ready = false;
 	
 	c.items = {
 		trainee: {
@@ -141,28 +98,98 @@ $(function() {
 			setTimeout(self.loop, 500);
 		};
 		this.loop();
+
+		this.type = function () {
+
+        }
 	};
-	c.go();
+	//c.go();
 
+	$('#power-button').on('click',function () {
+		if($(this).hasClass('active')) {
 
+		}
+		else {
+            c.go();
+            logo();
+            $(this).addClass('active');
+		}
+    });
 
 	$('#items .btn').click(function() {
-		c.add($(this).parent().parent().attr('id').replace('item-', ''));
-	});
-
-	$('#computer').click(function() {
-		writingLine();
+		c.add($(this).parent().attr('id').replace('item-', ''));
 	});
 	
 	$(document).keyup(function () {
-		writingLine();
-		type();
+		console.log(c.ready);
+		if(c.ready===true)
+			writingLine();
 	});
+    var str = "",
+        i = 0,
+        isTag,
+        text;
+
+    $.ajax({
+        url:"code.txt",
+    }).done(function(data) {
+        str = data;
+
+        nbChar = str.length;
+        return str;
+    });
+
+    $.ajax({
+        url:"logo.txt",
+    }).done(function(data) {
+        logoText = data;
+		return logoText;
+    });
+
+    function logo() {
+        textlogo = logoText.slice(i, ++i);
+
+        $('#code').append(textlogo);
+        if (textlogo.length > 0)
+			var suite = setTimeout(logo, 5);
+        else {
+        	i = 0;
+            c.ready = true;
+		}
+    }
+
+
+
+    function type() {
+        if(i==nbChar)
+            i = 0;
+        text = str.slice(i, ++i);
+        if (text === str) return;
+
+        $('#code').append(text);
+
+        var char = text.slice(-1);
+        if( char === ' ' || char === '	') isTag = true;
+        if( char !== ' ' ) isTag = false;
+
+        if (isTag) return type();
+    }
+
 
 	function writingLine() {
-		c.userinfos.score = parseInt(c.userinfos.score) + parseInt(c.get_power());
-		c.updatescore();
-		d=document.createElement('div');
+    	if($('#power-button').hasClass('active')) {
+            c.userinfos.score = parseInt(c.userinfos.score) + parseInt(c.get_power());
+            c.updatescore();
+
+            type();
+
+            $('#led').addClass('blink');
+            setTimeout(function(){
+                $("#led").removeClass('blink');
+            },100);
+
+        }
+		/*d=document.createElement('div');
 		$(d).addClass('cliclic')
 			.html('clic!')
 			.appendTo($("#computer"))
@@ -170,7 +197,7 @@ $(function() {
 			.animate({marginTop: '-50px', opacity: 0},800)
 			.queue(function() {
 				$(this).remove();
-			});
+			});*/
 	}
 
 	function get_cookie() {
