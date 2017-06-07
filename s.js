@@ -33,10 +33,15 @@ $(function() {
 		c.userinfos = {score : 0};
 		make_cookie();
 	}
+	idShowOnBoot = '#save, #myscore, #mycps';
+
+	$(idShowOnBoot).hide();
 	
 	c.go = function() {
 		
 		var self = this;
+
+		$(idShowOnBoot).show();
 		
 		this.updateitem = function(i) {
 			$('#item-'+i+' .nb').text(self.items[i].nb);
@@ -107,7 +112,7 @@ $(function() {
 
 	$('#power-button').on('click',function () {
 		if($(this).hasClass('active')) {
-
+			return false;
 		}
 		else {
             c.go();
@@ -241,6 +246,14 @@ $(function() {
 
 
 	c.prompt = false;
+
+	$('#save').on('click',function() {
+		make_cookie();
+		$(this).text('## OK ##');
+		setTimeout(function(){
+			$('#save').text('# Save #');
+		},1000);
+	});
 
 	Object.defineProperty(window, "save", {
 	    get: function() { make_cookie(); console.clear(); return 'Game saved. Now go to work.'; }

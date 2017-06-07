@@ -14,65 +14,70 @@
 	<![endif]-->
 </head>
 <body>
-
-<div class="navbar navbar-inverse">
-<div class="container">
-	<div class="navbar-header">
-		<a class="navbar-brand" href="#">Codemakers!</a>
-	</div>
-</div>
-</div>
-
-<div class="container">
-	<!-- Example row of columns -->
-	<div class="row">
-		<div class="col-sm-6">
-			<div class="row">
-				<div id="computer2">
-					<div id="wraper-code" class="well">
-						<div id="code"></div>
+<div id="page">
+	<div class="container">
+		<!-- Example row of columns -->
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="row">
+					<div id="computer2">
+						<!--<div id="map-bugs">
+							<div class="bug"></div>
+						</div>-->
+						<div id="wraper-code" class="well">
+							<div id="code"></div>
+						</div>
+						<div id="power-button"></div>
+						<div id="led"></div>
+						<div id="ventilation"></div>
 					</div>
-					<div id="power-button"></div>
-					<div id="led"></div>
-					<div id="ventilation"></div>
-				</div>
 
 
-				<div class="col-sm-4">
-
-					<div id="playground">
-						<div id="source"></div>
+					<div class="col-sm-4">
+						<div id="playground">
+							<div id="source"></div>
+						</div>
 					</div>
 				</div>
 			</div>
+
+
+			<div id="items" class="col-sm-6">
+				<div id="screens-tools" class="col-sm-6">
+					<button id="save">
+						# Save #
+					</button>
+				</div>
+				<div class="clearfix"></div>
+				<div id="screens-score" class="col-sm-6">
+					<h2 id="myscore"><span id="score">0</span> code lines</h2>
+					<h3 id="mycps"><span id="cps">0</span> lines/s</h3>
+				</div>
+
+
+
+				<div id="item-trainee" class="disquette">
+					<button type="button" class="btn btn-default"><i class="icon-male icon-large"></i> <span>Trainee</span></button>
+					<span class="item-nb"><span class="nb">0</span></span>
+					<span class="item-price"><span class="price">0</span></span>
+				</div>
+
+				<div id="item-coffee" class="disquette">
+					<button type="button" class="btn btn-primary"><i class="icon-coffee icon-large"></i> <span>Coffee</span></button>
+					<span class="item-nb"><span class="nb">0</span></span>
+					<span class="item-price"><span class="price">0</span></span>
+				</div>
+
+				<div id="item-robot" class="disquette">
+					<button type="button" class="btn btn-primary"><i class="icon-android icon-large"></i> <span>Robot</span></button>
+					<span class="item-nb"><span class="nb">0</span></span>
+					<span class="item-price"><span class="price">0</span></span>
+				</div>
 		</div>
 
-
-		<div id="items" class="col-sm-6">
-
-			<h2 id="myscore"><span id="score">0</span> code lines</h2>
-			<h3 id="mycps"><span id="cps">0</span> lines/s</h3>
-
-			<div id="item-trainee" class="disquette">
-				<button type="button" class="btn btn-default"><i class="icon-male icon-large"></i> <span>Trainee</span></button>
-				<span class="item-nb"><span class="nb">0</span></span>
-				<span class="item-price"><span class="price">0</span></span>
-			</div>
-
-			<div id="item-coffee" class="disquette">
-				<button type="button" class="btn btn-primary"><i class="icon-coffee icon-large"></i> <span>Coffee</span></button>
-				<span class="item-nb"><span class="nb">0</span></span>
-				<span class="item-price"><span class="price">0</span></span>
-			</div>
-
-			<div id="item-robot" class="disquette">
-				<button type="button" class="btn btn-primary"><i class="icon-android icon-large"></i> <span>Robot</span></button>
-				<span class="item-nb"><span class="nb">0</span></span>
-				<span class="item-price"><span class="price">0</span></span>
-			</div>
 	</div>
-
 </div>
+
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script src="s.js"></script>
 </body>
